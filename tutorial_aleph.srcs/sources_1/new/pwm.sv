@@ -23,7 +23,10 @@
 
 
 module pwm(
-    input [29:0] limit,
+    input [29:0] pwm1,
+    input [29:0] pwm2,
+    input [29:0] pwm3,
+    input [29:0] pwm4,
     input [29:0] count,
     input rst,
     input clk,
@@ -35,6 +38,12 @@ module pwm(
     logic [29:0] clk_cnt;
     logic s_endPeriod, s_clk;
     logic [3:0] s_pwmclock;   // Keeps track of the pwm clock
+    logic s_motor1;
+    logic s_motor2;
+    logic s_motor3;
+    logic s_motor4;
+    
+    assign motors = {s_motor1, s_motor2, s_motor3, s_motor4};
     
     // SCLK
     assign SCLK = s_clk;
@@ -54,13 +63,36 @@ module pwm(
             clk_cnt = clk_cnt + 1;
     end
     
-    // PWM
-    assign motors = s_pwmclock;
+    // PWM - Motor 1
     always @(posedge clk) begin
-        if (clk_cnt < limit)
-            s_pwmclock = 'hf;
+        if (clk_cnt < pwm1)
+            s_motor1 = 'b1;
         else
-            s_pwmclock = 'h0;
+            s_motor1 = 'b0;
+    end
+    
+    // PWM - Motor 2
+    always @(posedge clk) begin
+        if (clk_cnt < pwm2)
+            s_motor2 = 'b1;
+        else
+            s_motor2 = 'b0;
+    end
+    
+    // PWM - Motor 3
+    always @(posedge clk) begin
+        if (clk_cnt < pwm3)
+            s_motor3 = 'b1;
+        else
+            s_motor3 = 'b0;
+    end 
+    
+    // PWM - Motor 4
+    always @(posedge clk) begin
+        if (clk_cnt < pwm4)
+            s_motor4 = 'b1;
+        else
+            s_motor4 = 'b0;
     end
         
     // Period Counter
