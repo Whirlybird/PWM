@@ -11,12 +11,12 @@
 
 ##Switches
 ##IO_L19N_T3_VREF_35
-set_property PACKAGE_PIN G15 [get_ports {sw_tri_i[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {sw_tri_i[0]}]
+#set_property PACKAGE_PIN G15 [get_ports {sw_tri_i[0]}]
+#set_property IOSTANDARD LVCMOS33 [get_ports {sw_tri_i[0]}]
 
 ##IO_L24P_T3_34
-set_property PACKAGE_PIN P15 [get_ports {sw_tri_i[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {sw_tri_i[1]}]
+#set_property PACKAGE_PIN P15 [get_ports {sw_tri_i[1]}]
+#set_property IOSTANDARD LVCMOS33 [get_ports {sw_tri_i[1]}]
 
 ##IO_L4N_T0_34
 #set_property PACKAGE_PIN W13 [get_ports {sw_tri_i[2]}]
@@ -45,12 +45,12 @@ set_property IOSTANDARD LVCMOS33 [get_ports {RST}]
 
 ##LEDs
 ##IO_L23P_T3_35
-set_property PACKAGE_PIN M14 [get_ports {leds[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {leds[0]}]
+#set_property PACKAGE_PIN M14 [get_ports {leds[0]}]
+#set_property IOSTANDARD LVCMOS33 [get_ports {leds[0]}]
 
 ##IO_L23N_T3_35
-set_property PACKAGE_PIN M15 [get_ports {leds[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {leds[1]}]
+#set_property PACKAGE_PIN M15 [get_ports {leds[1]}]
+#set_property IOSTANDARD LVCMOS33 [get_ports {leds[1]}]
 
 ##IO_0_35
 #set_property PACKAGE_PIN G14 [get_ports {leds[2]}]
@@ -293,37 +293,21 @@ set_property IOSTANDARD LVCMOS33 [get_ports {leds[1]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {jd_p[3]}]
 
 ##Pmod Header JE
-##IO_L4P_T0_34
-set_property PACKAGE_PIN V12 [get_ports {pwm_clock[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {pwm_clock[0]}]
+##IO_L4P_T0_34 - JE10
+set_property PACKAGE_PIN Y17 [get_ports {MOTORS[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {MOTORS[0]}]
 
-##IO_L18N_T2_34 - Fake GND
-set_property PACKAGE_PIN W16 [get_ports {fakeGND[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {fakeGND[0]}]
+##IO_L19P_T3_35 - JE9
+set_property PACKAGE_PIN T17 [get_ports {MOTORS[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {MOTORS[1]}]
 
-##IO_25_35 - Fake Vcc
-set_property PACKAGE_PIN J15 [get_ports {fakePWR[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {fakePWR[0]}]
+##IO_L3N_T0_DQS_34 - JE8
+set_property PACKAGE_PIN U17 [get_ports {MOTORS[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {MOTORS[2]}]
 
-##IO_L19P_T3_35
-set_property PACKAGE_PIN H15 [get_ports {pwm_clock[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {pwm_clock[1]}]
-
-##IO_L3N_T0_DQS_34
-set_property PACKAGE_PIN V13 [get_ports {pwm_clock[2]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {pwm_clock[2]}]
-
-##IO_L9N_T1_DQS_34 - Fake GND
-set_property PACKAGE_PIN U17 [get_ports {fakeGND[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {fakeGND[1]}]
-
-##IO_L20P_T3_34 - Fake Vcc
-set_property PACKAGE_PIN T17 [get_ports {fakePWR[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {fakePWR[1]}]
-
-##IO_L7N_T1_34
-set_property PACKAGE_PIN Y17 [get_ports {pwm_clock[3]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {pwm_clock[3]}]
+##IO_L7N_T1_34 - JE7
+set_property PACKAGE_PIN V13 [get_ports {MOTORS[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {MOTORS[3]}]
 
 
 ##USB-OTG overcurrent detect pin
@@ -404,4 +388,3 @@ set_property IOSTANDARD LVCMOS33 [get_ports {pwm_clock[3]}]
 ##IO_0_34
 #set_property PACKAGE_PIN R19 [get_ports vga_vs]
 #set_property IOSTANDARD LVCMOS33 [get_ports vga_vs]
-
