@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: WhirlyBird RTOS Group
+// Engineer: Spencer Chang
 // 
 // Create Date: 11/10/2016 08:18:46 AM
 // Design Name: 
@@ -17,6 +17,8 @@
 // 
 // Revision:
 // Revision 0.01 - File Created
+// Revision 0.1  - Create Sequential, Clk-triggered PWM with 400 Hz Frequency.
+// Revision 0.11 - Split PWM into separate motors.
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
@@ -30,20 +32,18 @@ module pwm(
     input [29:0] count,
     input rst,
     input clk,
-    output sclk,
-    output endPeriod,
+//    output sclk,
+//    output endPeriod,
     output [3:0] motors
     );
     
     logic [29:0] clk_cnt;
     logic s_endPeriod, s_clk;
     logic [3:0] s_pwmclock;   // Keeps track of the pwm clock
-    logic s_motor1;
-    logic s_motor2;
-    logic s_motor3;
-    logic s_motor4;
+    logic s_motor1, s_motor2, s_motor3, s_motor4;
     
-    assign motors = {s_motor1, s_motor2, s_motor3, s_motor4};
+    // Concatenate into bus
+    assign motors = {s_motor4, s_motor3, s_motor2, s_motor1};
     
     // SCLK
     assign SCLK = s_clk;
@@ -95,8 +95,8 @@ module pwm(
             s_motor4 = 'b0;
     end
         
-    // Period Counter
-    assign endPeriod = s_endPeriod;
+    // Period Counter - May not still be needed...
+    //assign endPeriod = s_endPeriod;
     always @(posedge clk) begin
         // Initialize the counts.
         if (rst) begin
